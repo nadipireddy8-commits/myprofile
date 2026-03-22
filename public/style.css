@@ -11,6 +11,7 @@ body {
     min-height: 100vh;
     color: #333;
     line-height: 1.6;
+    overflow-x: hidden;
 }
 
 /* Smooth Scroll Behavior */
@@ -256,34 +257,111 @@ h1 {
     box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
 }
 
-/* Info Cards */
+/* Info Cards - Fixed positioning in center */
 #about, #skills, #projects, #contact {
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 90%;
-    max-width: 400px;
+    max-width: 450px;
     background: white;
     padding: 2rem;
     border-radius: 20px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-    z-index: 2000;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+    z-index: 9999;
     animation: slideIn 0.3s ease;
+    display: none;
+    max-height: 80vh;
+    overflow-y: auto;
 }
 
+/* Custom scrollbar for cards */
+#about::-webkit-scrollbar, #skills::-webkit-scrollbar, 
+#projects::-webkit-scrollbar, #contact::-webkit-scrollbar {
+    width: 5px;
+}
+
+#about::-webkit-scrollbar-track, #skills::-webkit-scrollbar-track,
+#projects::-webkit-scrollbar-track, #contact::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 5px;
+}
+
+#about::-webkit-scrollbar-thumb, #skills::-webkit-scrollbar-thumb,
+#projects::-webkit-scrollbar-thumb, #contact::-webkit-scrollbar-thumb {
+    background: #667eea;
+    border-radius: 5px;
+}
+
+/* Close button for cards */
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #999;
+    transition: color 0.3s ease;
+    z-index: 10000;
+    font-weight: bold;
+}
+
+.close-btn:hover {
+    color: #667eea;
+    transform: scale(1.1);
+}
+
+/* Card header styling */
 #about h3, #skills h3, #projects h3, #contact h2 {
     color: #667eea;
-    margin-bottom: 1rem;
-    font-size: 1.5rem;
+    margin-bottom: 1.2rem;
+    font-size: 1.8rem;
+    font-weight: 600;
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 0.5rem;
+    padding-right: 30px;
 }
 
-#about p, #skills p {
+/* Skills list styling */
+#skills ul {
+    list-style: none;
+    padding: 0;
+}
+
+#skills li {
+    padding: 0.5rem 0;
     color: #555;
-    line-height: 1.6;
+    font-size: 1rem;
 }
 
-/* Contact Form */
+#skills li:before {
+    content: '✓';
+    color: #667eea;
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+/* Project items */
+.project-item {
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    border-left: 3px solid #667eea;
+    padding-left: 1rem;
+}
+
+.project-item h4 {
+    color: #333;
+    margin-bottom: 0.3rem;
+    font-size: 1.1rem;
+}
+
+.project-item p {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* Contact form styling */
 #contact form {
     display: flex;
     flex-direction: column;
@@ -291,17 +369,23 @@ h1 {
 }
 
 #contact input, #contact textarea {
-    padding: 0.8rem;
+    padding: 0.8rem 1rem;
     border: 2px solid #e0e0e0;
     border-radius: 10px;
     font-size: 1rem;
     transition: all 0.3s ease;
+    font-family: inherit;
 }
 
 #contact input:focus, #contact textarea:focus {
     outline: none;
     border-color: #667eea;
     box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+#contact textarea {
+    resize: vertical;
+    min-height: 100px;
 }
 
 #contact button {
@@ -385,6 +469,12 @@ h1 {
     .dow {
         justify-content: center;
     }
+    
+    #about, #skills, #projects, #contact {
+        width: 90%;
+        max-width: 400px;
+        padding: 1.5rem;
+    }
 }
 
 @media (max-width: 768px) {
@@ -420,13 +510,19 @@ h1 {
     
     #about, #skills, #projects, #contact {
         width: 95%;
-        padding: 1.5rem;
+        max-width: 350px;
+        padding: 1.2rem;
+    }
+    
+    #about h3, #skills h3, #projects h3, #contact h2 {
+        font-size: 1.5rem;
     }
 }
 
 @media (max-width: 480px) {
     .sec1 {
         padding: 60px 5%;
+        margin: 10px;
     }
     
     .img img {
@@ -453,6 +549,12 @@ h1 {
     
     .btn1, .btn2 {
         width: 100%;
+    }
+    
+    #about, #skills, #projects, #contact {
+        width: 95%;
+        max-width: 300px;
+        padding: 1rem;
     }
 }
 
@@ -486,4 +588,37 @@ h1 {
     to {
         opacity: 1;
     }
+}
+
+/* Overlay when card is open */
+.card-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 9998;
+    display: none;
+}
+
+/* Success/Error Messages */
+.success-message, .error-message {
+    padding: 0.8rem;
+    border-radius: 10px;
+    margin-top: 1rem;
+    text-align: center;
+    animation: slideIn 0.3s ease;
+}
+
+.success-message {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.error-message {
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
 }
