@@ -1,404 +1,671 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    
-    <title>Profile</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="sec1.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jitendar Reddy - Python Developer Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
+<style>
+    * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', 'Segoe UI', 'Arial', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* Navigation Styles */
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 5%;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+.na {
+    font-size: 1.5rem;
+    font-weight: bold;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.menu {
+    display: flex;
+    gap: 1rem;
+    list-style: none;
+    align-items: center;
+}
+
+.bt {
+    background: transparent;
+    border: none;
+    padding: 0.5rem 1.2rem;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 50px;
+    color: #555;
+}
+
+.bt:hover {
+    color: #667eea;
+    transform: translateY(-2px);
+}
+
+/* Mobile Menu */
+.navbar-menu {
+    display: none;
+}
+
+.hamburger {
+    position: fixed;
+    right: 20px;
+    top: 20px;
+    background: white;
+    border-radius: 10px;
+    padding: 10px;
+    cursor: pointer;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1001;
+}
+
+.hamburger i {
+    font-size: 24px;
+    color: #667eea;
+}
+
+.navbar-menu .menu {
+    position: fixed;
+    top: 70px;
+    right: -300px;
+    background: white;
+    flex-direction: column;
+    padding: 2rem;
+    gap: 1rem;
+    border-radius: 20px 0 0 20px;
+    box-shadow: -5px 5px 20px rgba(0, 0, 0, 0.1);
+    transition: right 0.3s ease;
+    width: 250px;
+    z-index: 1000;
+}
+
+.navbar-menu .menu.show {
+    right: 0;
+}
+
+/* Main Section */
+.sec1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 100px 5%;
+    gap: 4rem;
+    background: white;
+    border-radius: 30px;
+    margin-top: 80px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+}
+
+.img img {
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    border: 5px solid white;
+    transition: transform 0.3s ease;
+}
+
+.img img:hover {
+    transform: scale(1.05);
+}
+
+.sec1-2 {
+    flex: 1;
+    max-width: 600px;
+}
+
+.sp {
+    font-size: 1.2rem;
+    color: #667eea;
+    font-weight: 500;
+    letter-spacing: 2px;
+    display: inline-block;
+    margin-bottom: 1rem;
+}
+
+h1 {
+    font-size: 3rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 1rem;
+}
+
+.sp1 {
+    font-size: 1.3rem;
+    color: #764ba2;
+    font-weight: 500;
+    display: inline-block;
+    margin-bottom: 1.5rem;
+    border-left: 4px solid #667eea;
+    padding-left: 1rem;
+}
+
+.p1 {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 2rem;
+    line-height: 1.8;
+}
+
+.dow {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.btn1, .btn2 {
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+}
+
+.btn1 {
+    background: transparent;
+    border: 2px solid #667eea;
+    color: #667eea;
+}
+
+.btn1:hover {
+    background: #667eea;
+    color: white;
+    transform: translateY(-3px);
+}
+
+.btn2 {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.btn2:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+/* Cards - Centered Popup */
+#about, #skills, #projects, #contact {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 500px;
+    background: white;
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+    z-index: 9999;
+    display: none;
+    animation: slideIn 0.3s ease;
+    max-height: 85vh;
+    overflow-y: auto;
+}
+
+/* Close Button */
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #999;
+    transition: all 0.3s ease;
+    font-weight: bold;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.close-btn:hover {
+    color: #667eea;
+    background: #f0f0f0;
+    transform: rotate(90deg);
+}
+
+/* Card Headers */
+#about h3, #skills h3, #projects h3, #contact h2 {
+    color: #667eea;
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+    font-weight: 600;
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 0.8rem;
+    padding-right: 30px;
+}
+
+/* About Card */
+#about p {
+    color: #555;
+    line-height: 1.8;
+    margin-bottom: 1rem;
+}
+
+/* Skills Card */
+#skills ul {
+    list-style: none;
+    padding: 0;
+}
+
+#skills li {
+    padding: 0.8rem 0;
+    color: #555;
+    border-bottom: 1px solid #f0f0f0;
+    display: flex;
+    align-items: flex-start;
+}
+
+#skills li:last-child {
+    border-bottom: none;
+}
+
+#skills li:before {
+    content: '✓';
+    color: #667eea;
+    margin-right: 12px;
+    font-weight: bold;
+    flex-shrink: 0;
+}
+
+#skills li strong {
+    color: #333;
+    min-width: 140px;
+}
+
+/* Projects Card */
+.project-item {
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    border-left: 3px solid #667eea;
+    background: #f8f9fa;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.project-item:hover {
+    transform: translateX(5px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.project-item h4 {
+    color: #667eea;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.project-item p {
+    color: #666;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+/* Contact Form */
+#contact form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+#contact input, #contact textarea {
+    padding: 0.8rem 1rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-family: inherit;
+    width: 100%;
+}
+
+#contact input:focus, #contact textarea:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+#contact button {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 0.8rem;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#contact button:hover {
+    transform: translateY(-2px);
+}
+
+/* Messages */
+.loading, .success-message, .error-message {
+    padding: 0.8rem;
+    border-radius: 10px;
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.loading {
+    background: #e3f2fd;
+    color: #1976d2;
+    animation: pulse 1.5s ease infinite;
+}
+
+.success-message {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.error-message {
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* Animations */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -40%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.6; }
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .navbar {
+        display: none;
+    }
+    .navbar-menu {
+        display: block;
+    }
+    .sec1 {
+        flex-direction: column;
+        text-align: center;
+        padding: 60px 5%;
+        margin-top: 60px;
+    }
+    .img img {
+        width: 250px;
+        height: 250px;
+    }
+    h1 {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    #about, #skills, #projects, #contact {
+        width: 95%;
+        max-width: 400px;
+        padding: 1.5rem;
+    }
+    #skills li {
+        flex-direction: column;
+    }
+    #skills li strong {
+        margin-bottom: 0.3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .img img {
+        width: 200px;
+        height: 200px;
+    }
+    h1 {
+        font-size: 1.5rem;
+    }
+    .dow {
+        flex-direction: column;
+    }
+    .btn1, .btn2 {
+        width: 100%;
+    }
+}
+</style>
 <body>
-    <style>
-        .menu{
-        
-            font-style: italic;
-            font-weight: 60px;
-            font-size: 20px;
-            font-weight: bold;
-            list-style: none;
-            display: flex;
-            padding: 10px;
-            width: 60%;
-            justify-content: space-around;
-        }
-        .na{
-            font-size: 30px;
-            font-family: Arial, Helvetica, sans-serif;
-            font-weight: bolder;
-            padding: 20px;
-            width: 40%;
-            color: orange;
-            margin-bottom: 10px;
 
-            
-        }
-        nav{
-            display: flex;
-            align-items: center;
-        }
-
-
-        .img{
-            border: 50%;
-        }
-        *{
-            padding: 0;
-            margin: 0;
-        }
-        .navbar-menu{
-            display: none;
-
-        }
-        @media(max-width: 1024px){
-            .navbar{
-                display: none;
-            }
-            .navbar-menu{
-                display: flex;
-            }
-            .hamburger{
-                background-color: white;
-                box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;;
-                position: fixed;
-                right: 30px;
-                top: 20px;
-            }
-            
-            .hamburger i{
-                font-size: 35px;
-                padding: 4px;
-                
-            }
-            .navbar-menu .na{
-                margin-top: 20px;
-            }
-            .navbar-menu .menu{
-                display: flex;
-                flex-direction: column;
-                background-color: orange;
-                position: fixed;
-                margin-right: -700px;
-                right: 0;
-                top: 70px;
-                padding: 10px;
-                border-radius: 5px;
-                transition: all 0.3s ease;
-            }
-            .navbar-menu .menu.show{
-                margin-right: 0;
-
-            }
-            .navbar-menu .menu  li{
-                background-color: white;
-                gap: 20px;
-                border-radius: 5px;
-                font-weight: 600;
-            }
-            
-        }
-        .bt{
-            border-radius: 400px;
-            padding: 10px;
-            border:solid black;
-        }
-        .bt:hover{
-            background-color: orange;
-        }
-        #about{
-            display: none;
-            width: 300px;
-            padding: 15px;
-            margin-top: 10px;
-            background: #f2f2f2;
-            border: 2px solid #333;
-            border-radius: 10px;
-            text-align: left;
-
-            float: none;
-            shape-outside: none;
-            position:static;
-        }
-        #skills{
-            display: none;
-            width: 300px;
-            padding: 15px;
-            margin-top: 10px;
-            background: #f2f2f2;
-            border: 2px solid #333;
-            border-radius: 10px;
-            text-align: left;
-
-            float: none;
-            shape-outside: none;
-            position:static;
-
-        }
-        @media(max-width:1024px){
-            .sec1{
-            
-            flex-direction: column;
-            }
-            .sec1-2{
-                align-items: center;
-            }
-
-        }
-        #projects{
-            display: none;
-            width: 300px;
-            padding: 15px;
-            margin-top: 10px;
-            background: #f2f2f2;
-            border: 2px solid #333;
-            border-radius: 10px;
-            text-align: left;
-
-            float: none;
-            shape-outside: none;
-            position:static;
-        }
-        #Contact{
-            display: none;
-            width: 300px;
-            padding: 15px;
-            margin-top: 10px;
-            background: #f2f2f2;
-            border: 2px solid #333;
-            border-radius: 10px;
-            text-align: left;
-
-            float: none;
-            shape-outside: none;
-            position:static;
-        }
-        .img img{
-            width: 400px;
-            height: 400px;
-            border-radius: 50%;
-            object-fit: cover;
-
-        }
-        .sec1{
-            display: flex;
-            height: 40vh;
-            align-items: center;
-            margin: 100px;
-
-        }
-        .sec1-2{
-            margin: 100px;
-        }
-        .sp{
-            color: black;
-            font-weight: 200px;
-            font-size: 20px;
-            padding-bottom: 5px;
-        }
-        .btn1{
-            height: 30px;
-            justify-content: space-around;
-            color:black;
-            border: 2px solid black;
-            border-radius: 20px;
-            font-size: 15px;
-            font-weight: 400px;
-            
-        }
-        .btn1:hover{
-            background-color: black;
-            color: white;
-        }
-        .btn2:hover{
-            background-color: orange;
-            color: black ;
-
-        }
-        .btn2{
-            height: 30px;
-            justify-content: space-around;
-            color: white;
-            background-color: black;
-            border-radius: 20px;
-            font-size: 15px;
-            gap: 30px;
-            
-        
-        }
-        h1{
-            color: darkorange;
-            font-size: 35px;
-            
-        }
-        .sp1{
-            height: 5px;
-            font-size: 25px;
-            height: 10px;
-            font-weight: 300px;
-            margin-bottom: 20px;
-            
-        }
-        .btn3{
-            cursor: pointer;
-        }
-        .p1{
-            text-align: left;
-            margin-bottom: 20px;
-            font-family: 'Times New Roman', Times, serif;
-            font-size: 20px;
-        }
-        .sp1{
-            margin-bottom: 10px;
-        }
-    </style>
-    
+    <!-- Desktop Navigation -->
     <nav class="navbar">
         <div class="na">Jitendar Reddy N R</div>
         <div class="menu">
-        <button class="bt" onclick="on()">About</button>
-        <button class="bt" onclick="ons()">Skills</button>
-        <button class="bt" onclick="pro()">Projects</button>
-        <a href="cer.png.jpeg" download><button class="bt">Certificates</button></a>
+            <button class="bt" onclick="showAbout()">About</button>
+            <button class="bt" onclick="showSkills()">Skills</button>
+            <button class="bt" onclick="showProjects()">Projects</button>
+            <a href="cer.png.jpeg" download><button class="bt">Certificates</button></a>
+            <button class="bt" onclick="showContact()">Contact</button>
         </div>
-        <button class="bt" onclick="con()">Contact</button>
-
     </nav>
+
+    <!-- Mobile Navigation -->
     <nav class="navbar-menu">
-        <div class="na">Jitendar Reddy N R</div>
         <div class="hamburger"><i class="fa-solid fa-bars"></i></div>
         <ul class="menu">
-            <li><button  onclick="on()">About</button></li>
-            <li><button onclick="ons()">Skills</button></li>
-            <li><button onclick="pro()">Projects</button></li>
-            <li><a href="cer.png.jpeg" download><button >Certificates</button></a></li>
-            <li><button class="bt" onclick="con()">Contact</button></li>
+            <li><button class="bt" onclick="showAbout()">About</button></li>
+            <li><button class="bt" onclick="showSkills()">Skills</button></li>
+            <li><button class="bt" onclick="showProjects()">Projects</button></li>
+            <li><a href="cer.png.jpeg" download><button class="bt">Certificates</button></a></li>
+            <li><button class="bt" onclick="showContact()">Contact</button></li>
         </ul>
     </nav>
+
+    <!-- Main Content -->
     <section class="sec1">
-        <div class="img"><img src="img.png.jpeg" > </div>
+        <div class="img"><img src="img.png.jpeg" alt="Jitendar Reddy"></div>
         <div class="sec1-2">
-            <span class="sp">Hello, i am</span>
+            <span class="sp">Hello, I am</span>
             <h1>Jitendar Reddy</h1>
             <span class="sp1">Python Developer</span>
-            <p class="p1">As a dedicated Python Developer, I specialize in building robust backend systems and scalable web applications using frameworks like Django and FastAPI. I possess a strong foundation in data structures, SQL databases, and RESTful API integration, allowing me to transform complex logic into efficient code. My approach combines technical precision with a focus on writing clean, maintainable documentation that supports seamless team collaboration. I am committed to continuous learning and leveraging Python’s powerful ecosystem to solve real-world problems and optimize digital performance.</p>
+            <p class="p1">As a dedicated Python Developer, I specialize in building robust backend systems and scalable web applications using frameworks like Django and FastAPI. I possess a strong foundation in data structures, SQL databases, and RESTful API integration, allowing me to transform complex logic into efficient code. My approach combines technical precision with a focus on writing clean, maintainable documentation that supports seamless team collaboration. I am committed to continuous learning and leveraging Python's powerful ecosystem to solve real-world problems and optimize digital performance.</p>
             <div class="dow">
-            <a href="cv.png.jpeg" download><button class="btn1" >Download cv</button> </a>           
-            <button class="btn2" onclick="window.location.href='tel:+91 6302564838'">Contact info</button> 
-            </div>           
-
+                <a href="cv.png.jpeg" download><button class="btn1">Download CV</button></a>
+                <button class="btn2" onclick="window.location.href='tel:+91 6302564838'">Contact Info</button>
+            </div>
         </div>
     </section>
+
+    <!-- About Card -->
     <div id="about">
-        <p>Hello! I am Jitendar Reddy. I am a student and a beginner Python Developer.
-    I am interested in web development and learning new technologies.
-    I enjoy coding, solving problems, and building small projects.</p>
-
+        <h3>About Me</h3>
+        <p>Hello! I am Jitendar Reddy, a passionate Python Developer and tech enthusiast. I specialize in building robust backend systems and scalable web applications using frameworks like Django and FastAPI.</p>
+        <p>I have a strong foundation in data structures, SQL databases, and RESTful API integration. My approach combines technical precision with clean, maintainable code that supports seamless team collaboration.</p>
+        <p>I'm committed to continuous learning and leveraging Python's powerful ecosystem to solve real-world problems and optimize digital performance.</p>
     </div>
+
+    <!-- Skills Card -->
     <div id="skills">
-        <p> Programming:Python<br>Fronted:HTML,CSS,Javascript</p>
+        <h3>My Skills</h3>
+        <ul>
+            <li><strong>Programming:</strong> Python, JavaScript, SQL</li>
+            <li><strong>Frameworks:</strong> Django, FastAPI, Flask</li>
+            <li><strong>Frontend:</strong> HTML, CSS, React.js</li>
+            <li><strong>Databases:</strong> MySQL, PostgreSQL, MongoDB</li>
+            <li><strong>Tools:</strong> Git</li>
+            <li><strong>Soft Skills:</strong> Problem Solving, Team Collaboration</li>
+        </ul>
     </div>
-    <script>
-        function on(){
-            let about=document.getElementById("about");
-            if(about.style.display ==="none" || about.style.display ===""){
-                about.style.display="block";
-            }else{
-                about.style.display="none";
-            }
-        }
-    
 
-    </script>
+    <!-- Projects Card -->
     <div id="projects">
-        <p>Calculator</p>
-
+        <h3>My Projects</h3>
+        <div class="project-item">
+            <h4>📊 Portfolio Website</h4>
+            <p>Responsive personal portfolio with contact form and database integration.</p>
+        </div>
+        <div class="project-item">
+            <h4>🛒 E-commerce API</h4>
+            <p>RESTful API with Django REST Framework, authentication, and payment integration.</p>
+        </div>
+       
     </div>
-    <script>
-        function ons(){
-            let skills=document.getElementById("skills");
-            if(skills.style.display ==="none" || skills.style.display ===""){
-                skills.style.display="block";
-            }else{
-                skills.style.display="none";
-            }
-        }
 
-    </script>
-    <script>
-        function pro(){
-            let projects=document.getElementById("projects");
-            if(projects.style.display ==="none" || projects.style.display ===""){
-                projects.style.display="block";
-            }else{
-                projects.style.display="none";
-            }
-        }
-
-    </script>
-    
-    <script> 
-        const hamburger=document.querySelector('.hamburger');
-        const menu_bar=document.querySelector(".navbar-menu .menu");
-        hamburger.addEventListener("click",()=>{
-            menu_bar.classList.toggle("show")
-
-        })
-    </script>
-
-
-
-    <div id="contact" style="display: none;">
+    <!-- Contact Card -->
+    <div id="contact">
         <h2>Contact Me</h2>
         <form id="contactForm">
-        <input type="text" id="name" placeholder="Enter name" required><br><br>
-        <input type="email" id="email" placeholder="Enter email" required><br><br>
-        <textarea id="message" placeholder="Enter message"></textarea><br><br>
-        <button type="submit">Send</button>
+            <input type="text" id="name" placeholder="Enter your name" required>
+            <input type="email" id="email" placeholder="Enter your email" required>
+            <textarea id="message" placeholder="Enter your message" rows="4" required></textarea>
+            <button type="submit">Send Message</button>
         </form>
-
-
+        <div id="formResponse"></div>
     </div>
 
     <script>
-        function con(){
-            let section=document.getElementById('contact');
-            if(section.style.display==="none"){
-                section.style.display="block";
+        // Card Functions
+function showAbout() {
+    closeAllCards();
+    let about = document.getElementById("about");
+    about.style.display = "block";
+    addCloseButton(about);
+}
 
-            }else{
-                section.style.display="none";
+function showSkills() {
+    closeAllCards();
+    let skills = document.getElementById("skills");
+    skills.style.display = "block";
+    addCloseButton(skills);
+}
+
+function showProjects() {
+    closeAllCards();
+    let projects = document.getElementById("projects");
+    projects.style.display = "block";
+    addCloseButton(projects);
+}
+
+function showContact() {
+    closeAllCards();
+    let contact = document.getElementById("contact");
+    contact.style.display = "block";
+    addCloseButton(contact);
+}
+
+function closeAllCards() {
+    let cards = ['about', 'skills', 'projects', 'contact'];
+    cards.forEach(card => {
+        let element = document.getElementById(card);
+        if (element) element.style.display = "none";
+    });
+}
+
+function addCloseButton(card) {
+    let existingClose = card.querySelector('.close-btn');
+    if (existingClose) existingClose.remove();
+    
+    let closeBtn = document.createElement('span');
+    closeBtn.innerHTML = '✕';
+    closeBtn.className = 'close-btn';
+    closeBtn.onclick = () => card.style.display = "none";
+    card.appendChild(closeBtn);
+}
+
+// Close card when clicking outside
+document.addEventListener('click', function(event) {
+    let cards = ['about', 'skills', 'projects', 'contact'];
+    for (let cardId of cards) {
+        let card = document.getElementById(cardId);
+        if (card && card.style.display === 'block') {
+            if (!card.contains(event.target) && 
+                !event.target.classList.contains('bt') &&
+                !event.target.closest('.bt')) {
+                card.style.display = 'none';
             }
+            break;
         }
+    }
+});
+
+// Hamburger Menu Toggle
+const hamburger = document.querySelector('.hamburger');
+const menuBar = document.querySelector(".navbar-menu .menu");
+if (hamburger) {
+    hamburger.addEventListener("click", () => {
+        menuBar.classList.toggle("show");
+    });
+}
+
+// Contact Form Submission
+const contactForm = document.getElementById("contactForm");
+if (contactForm) {
+    contactForm.addEventListener("submit", function(e) {
+        e.preventDefault();
         
-        document.getElementById("contactForm").addEventListener("submit", function(e){
-
-
-            e.preventDefault();
-
-
-            let data = {
-
-                name: document.getElementById("name").value,
-                email: document.getElementById("email").value,
-                message: document.getElementById("message").value
-            };
-
-            fetch("/contact", {
-            
-
-                method: "POST",
-                headers: {
-                "Content-Type": "application/json"
-                },
-                body: JSON.stringify(data)
-            })
-            .then(res => res.text())
-            .then(data => alert(data));
-
+        let data = {
+            name: document.getElementById("name").value,
+            email: document.getElementById("email").value,
+            message: document.getElementById("message").value
+        };
+        
+        let formResponse = document.getElementById("formResponse");
+        formResponse.innerHTML = '<div class="loading">Sending...</div>';
+        
+        fetch("/contact", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data)
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (data.success) {
+                formResponse.innerHTML = '<div class="success-message">✓ ' + data.message + '</div>';
+                contactForm.reset();
+                setTimeout(() => formResponse.innerHTML = '', 3000);
+            } else {
+                formResponse.innerHTML = '<div class="error-message">✗ ' + data.error + '</div>';
+            }
+        })
+        .catch(() => {
+            formResponse.innerHTML = '<div class="error-message">✗ Error sending message. Please try again.</div>';
         });
+    });
+}
     </script>
-    
-
-    
 </body>
 </html>
